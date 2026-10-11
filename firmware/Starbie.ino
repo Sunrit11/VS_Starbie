@@ -19,7 +19,7 @@
 #include <DHT.h>
 #include <Preferences.h>
 #include <math.h>
-
+//FIX THE LEDS HAVE NOT INCLUDED WHEN IT WILL GLOW
 // =========================== BEGINNER SETTINGS ===========================
 // Everything most builders will want to customize is in this one section.
 
@@ -30,7 +30,8 @@ const int I2C_SCL_PIN = 6;       // XIAO D5: OLED + MPU6050 SCL
 const int DHT_PIN = 3;           // XIAO D1: DHT11 data
 const int BUTTON_ONE_PIN = 4;    // XIAO D2: opens/confirms the radial menu
 const int BUTTON_TWO_PIN = 5;    // XIAO D3: shows/hides stats
-
+const int LED1=8;                // LEDs glow when any action happens
+const int LED2=7;
 // Set this to false if your submission does not have a DHT11.
 const bool USE_DHT11 = true;
 
@@ -239,6 +240,9 @@ void loadPet() {
   pet.joy = preferences.getInt("joy", STARTING_JOY);
   pet.energy = preferences.getInt("energy", STARTING_ENERGY);
   pet.fullness = preferences.getInt("full", STARTING_FULLNESS);
+  pinMode(LED1,HIGH);
+  pinMode(LED2,HIGH);
+  
 }
 
 void savePet() {
